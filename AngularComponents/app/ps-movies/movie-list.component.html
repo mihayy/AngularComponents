@@ -1,0 +1,67 @@
+﻿<div>
+    <h3>{{ model.message }}</h3>
+    <input type="text" ng-model="model.message" />
+    <br />
+    <button ng-click="model.changeMessage()">
+        Change Message
+    </button>
+    <br /><br /><br />
+
+    <table class="table">
+        <tr>
+            <th>Title</th>
+            <th>Length</th>
+            <th>Rating</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="movie in model.movies">
+            <td>{{movie.title}}</td>
+            <td>{{movie.length}}</td>
+            <td>
+                <movie-rating rating-value="movie.rating">
+                    <span class="glyphicon glyphicon-star"></span>
+                </movie-rating></td>
+            <td>
+                <div class="btn-group">
+                    <button class="btn btn-defualt" ng-click="model.upRating(movie)">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                    <button class="btn btn-defualt" ng-click="model.downRating(movie)">
+                        <span class="glyphicon glyphicon-minus"></span>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <br /><br />
+
+    <h3>Other approach</h3>
+    <table class="table">
+        <tr>
+            <th>Title</th>
+            <th>Length</th>
+            <th>Rating</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="movie in model.movies">
+            <td>{{movie.title}}</td>
+            <td>{{movie.length}}</td>
+            <td>
+                <rating value="movie.rating" max="5" set-rating="model.setRating(movie, value)">
+                </rating>
+            </td>
+            <td>
+                <div class="btn-group">
+                    <button class="btn btn-defualt" ng-click="model.upRating(movie)">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                    <button class="btn btn-defualt" ng-click="model.downRating(movie)">
+                        <span class="glyphicon glyphicon-minus"></span>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+</div>
